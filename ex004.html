@@ -6,10 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date</title>
     <script src="script004.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        p{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
+        }
+        code{
+            color: rgb(165, 79, 79);
+            font-style: italic;
+        }
+        header{
+            display: block;
+            margin: auto;
+            text-align: center;
+            background-color: #524f51;
+            height: 100px;
+            padding-top: 50px;
+            border-radius: 20px;
+            max-width: 1500px;
+            margin-top: 50px;
+            box-shadow: 8px 6px 10px -2px rgba(0, 0, 0, 0.700);
+        }
+        main{
+            height: 400px;
+            display: block;
+            margin: auto;
+            text-align: center;
+            max-width: 1000px;
+            min-width: 320px;
+            background-color: #afafaf;
+            margin-bottom: 80px;
+            border-radius: 0px 0px 20px 20px;
+            padding-top: 150px;
+        }
+
+        #saudacao{
+            font-family: monospace;
+            font-size: 5em;
+            color: white;
+        }
+
+        .mt{
+            margin-top: 20px;
+        }
+        input[type=button]{
+            width: 115px;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+
+        input[type=date]{
+            width: 115px;
+            padding: 2px;
+            border: 1px solid black;
+        }
+    </style>
 </head>
-<body>
+<body onload=escreveData()>
     <!--<br><br>Data atual<br><small>Pega a data atual</small><br><code></code>-->
-    <p>Data atual<br><small>Formas de instanciar um tipo date</small><br><code>var data = new Date(); -> Data atual<br> var dataPassada = new Date("01/22/1994 15:23:35"); -> Data passada <br>var data2 = new Date(1994,0,22,15,23,35); -> Data passada</code><br><br>Métodos da clase date<br><small>Pega a data</small><br><code>var dia = hoje.getDate(); -> Pega o dia <br> var mes = hoje.getMonth(); -> Pega o mês, sendo que janeiro é 0 <br> var ano = hoje.getFullYear(); -> Pega o ano <br>
-        var diaSemana = hoje.getDay(); -> Pega o dia da semana, sendo que domingo é 0</code></p>
+    <p>
+        Data atual<br><small>Formas de instanciar um tipo date</small><br><code>var data = new Date(); -> Data atual<br> var dataPassada = new Date("01/22/1994 15:23:35"); -> Data passada <br>var data2 = new Date(1994,0,22,15,23,35); -> Data passada</code><br><br>Métodos da clase date<br><small>Pega a data</small><br><code>var dia = hoje.getDate(); -> Pega o dia <br> var mes = hoje.getMonth(); -> Pega o mês, sendo que janeiro é 0 <br> var ano = hoje.getFullYear(); -> Pega o ano <br>
+        var diaSemana = hoje.getDay(); -> Pega o dia da semana, sendo que domingo é 0</code><br><br>Tratamento de Date <br><small>Impossível usar o comparador 'igual' (==), pois ao instanciar um tipo date ele pega os valores dos milisegundos também, ou seja, essa comparação sempre será falsa <br>Uma solução é usar o método getTime() <br> Já realizar comparações como maior e menor são válidas</small><br><code>if(dataX == dataY) -> Errado <br> if(dataX.getTime() == dataY.getTime()) -> Correto<br> if(dataX > dataY) -> Correto</code>
+    </p>
+    <header>
+        <h1>Data atual</h1>
+        <span id="data"></span>
+    </header>
+    <main>
+        <span id="saudacao"></span>
+        <hr>
+        <br>
+        <p class="mt">Data inicial:</p>
+        <input type="date" id="dataInicial">
+        <p class="mt">Data final:</p>
+        <input type="date" id="dataFinal"> <br>
+        <input class="mt" type="button" value="Enviar" onclick="pesquisar()">
+    </main>
 </body>
 </html>
