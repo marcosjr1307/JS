@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query selector- altera atributos</title>
+    <script>
+        function exibirSenha() {
+            document.getElementById("pwd").value 
+            if(document.querySelector("#pwd").getAttribute("type")=="password"){
+                document.querySelector("#pwd").setAttribute("type","text"); 
+                document.querySelector("#exibicao").innerHTML = "<img src= 'https://cdn-icons-png.flaticon.com/512/25/25186.png' >"; 
+            }
+            else if(document.querySelector("#pwd").getAttribute("type")=="text"){
+                document.querySelector("#pwd").setAttribute("type","password"); 
+                document.querySelector("#exibicao").innerHTML="<img src='https://cdn-icons-png.flaticon.com/512/8442/8442581.png'>"; 
+            }
+        }
+    </script>
+</head>
+<body>
+   Login: <br>
+    <input type="text" size="30">
+    <br><br>
+    Password: <br>
+    <input type="password" id="pwd">
+    <span id="exibicao" onclick="exibirSenha();"><img src="https://cdn-icons-png.flaticon.com/512/25/25186.png" width="15px"></span>
+    <br><br>
+    <button>ok</button>
+</body>
+</html>
