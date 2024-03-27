@@ -8,11 +8,13 @@
         $senha = $_POST['senha'];
         if(trim($login) != '' && trim($senha) != ''){
             if(($login == "professor") && ($senha == "1234")){
-                $pagina = 'professor.html';
+                header('Location: professor.html?login='.$login);
             }else if(($login == "aluno") && ($senha == "5678")){
-                $pagina = 'aluno.html';
+                $login = 'Marcos';
+                header('Location: aluno.php?login='.$login);
             }else{
-                $pagina = 'erro.html';
+                $erro = "Login ou senha inválidos";
+                header('Location: erro.php?msg='.$erro);
             }
         }else{
             
@@ -41,6 +43,12 @@
         <br> <br>
 
         <input type="submit" value="Ok">
+
+        <?php
+            if($pagina != ""){
+                include $pagina;
+            }
+        ?>
     </form>
 </body>
 </html>
