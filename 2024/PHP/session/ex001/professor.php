@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if(!isset($_SESSION["login"])){
+        $msg = "Login ou senha inválidos!";
+        header("location: erro.php?msg=.$msg");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +14,11 @@
     <title>Professor</title>
 </head>
 <body>
+    <a href="#">Lançamento de notas</a>
+    |
+    <a href="#">Faltas</a>
+    |
+    <a href="logout.php">Logout</a>
     <h2>Professor</h2>
     <p>Página para professores!</p>
 </body>

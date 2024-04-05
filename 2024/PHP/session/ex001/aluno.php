@@ -14,8 +14,10 @@
     <title>Aluno</title>
 </head>
 <body>
+    <a href="logout.php">Logout</a>
+    |
+    <hr>
     <h2>Alunos</h2>
     <p>Página para alunos!</p>
-    <a href="logout.php">Logout</a>
 </body>
 </html>

@@ -10,7 +10,7 @@
             if(($login == "professor") && ($senha == "1234")){
                 session_start();
                 $_SESSION["login"] = $login;
-                header('Location: professor.html');
+                header('Location: professor.php');
             }else if(($login == "aluno") && ($senha == "5678")){
                 session_start();
                 $_SESSION["login"] = $login;
