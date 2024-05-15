@@ -1,24 +1,25 @@
 <?php
     if($_SERVER["REQUEST_METHOD"] == "GET"){
-        $senhaDefinida = "";
+        $senhaDefinida = md5("teste123");
         $msg = "";
         $username = "";
         $senha = "";
     }else if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $senhaDefinida = "marcos123";
+        $senhaDefinida = md5("teste123");
         $msg = "";
         if(isset($_POST["username"]) && isset($_POST["senha"])){
             $username = trim($_POST["username"]);
             $senha = trim($_POST["senha"]);
             if(($username === "") || ($senha === "")){
                 $msg = "Informe um usário e senha!";
-            }else if(strlen($username) <= 5){
-                $msg = "O username precisa tem no mínimo 5 caracteres";
-            }else if(strlen($senha) <= 8){
+            }else if(strlen($username) < 5){
+                $msg = "O username precisa ter no mínimo 5 caracteres";
+            }else if(strlen($senha) < 8){
                 $msg = "A senha precisa tem no mínimo 8 caracteres";
-            }
-            else{
-                
+            }else if(md5($senha) != $senhaDefinida){
+                $msg = "A senha informada está incorreta!";
+            }else{
+                header("Location: home.php?username=". $username);
             }
         }   
     }
@@ -40,7 +41,16 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100vw;
             text-align: center;
+        }
+        .container{
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
         }
     </style>
 </head>
