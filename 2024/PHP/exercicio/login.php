@@ -1,11 +1,12 @@
 <?php
     if($_SERVER["REQUEST_METHOD"] == "GET"){
-        $senhaDefinida = md5("teste123");
+        $senhaDefinida = "";
         $msg = "";
         $username = "";
         $senha = "";
     }else if($_SERVER["REQUEST_METHOD"] == "POST"){
         $senhaDefinida = md5("teste123");
+        $senhaDefinida = crypt($senhaDefinida, "CoT1lUniCAmP");
         $msg = "";
         if(isset($_POST["username"]) && isset($_POST["senha"])){
             $username = trim($_POST["username"]);
@@ -16,10 +17,12 @@
                 $msg = "O username precisa ter no mínimo 5 caracteres";
             }else if(strlen($senha) < 8){
                 $msg = "A senha precisa tem no mínimo 8 caracteres";
-            }else if(md5($senha) != $senhaDefinida){
+            }else if(crypt(md5($senha), "CoT1lUniCAmP") != $senhaDefinida){
+                echo "Senha" . crypt(md5($senha), "CoT1lUniCAmP");    
                 $msg = "A senha informada está incorreta!";
             }else{
-                header("Location: home.php?username=". $username);
+                setcookie("InfoUser-username", $username, time()+3600, "/");
+                header("Location: home.php");
             }
         }   
     }

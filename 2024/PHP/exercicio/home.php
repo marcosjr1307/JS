@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Bem vindo <?=$_GET["username"]?></h1>
-</body>
-</html>
+<?php
+    $msg = "";
+    if(!isset($_COOKIE["InfoUser-username"])){
+        $msg = "Usuário não está definido! Para ter acesso <a href='login.php'>Clique aqui!</a>";
+        header('Location: erro.php?msg='  . $msg);
+    }else{
+        require('conteudo.php');
+    }
