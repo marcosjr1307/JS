@@ -8,13 +8,6 @@
         setcookie("class", $class, time()+3600, "/");
         header("Location: class.php");
     }
-    $turmas = array(
-        '3DSD' => array(
-            "16117" => "Amanda Oliveira Santos",
-            ""
-            )
-
-        );
     //$meuArray = array("X" => 'Maça', "Y"=> "Melão", "Tres" => "Uva");
     //$melao = array_search("Y", $meuArray);
    // array_key_exists("Y", $meuArray);
